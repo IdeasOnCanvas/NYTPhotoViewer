@@ -15,22 +15,22 @@ FOUNDATION_EXPORT double NYTPhotoViewerCoreVersionNumber;
 FOUNDATION_EXPORT const unsigned char NYTPhotoViewerCoreVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <NYTPhotoViewer/PublicHeader.h>
-#import <NYTPhotoViewer/NYTPhotoCaptionView.h>
-#import <NYTPhotoViewer/NYTPhotoDismissalInteractionController.h>
-#import <NYTPhotoViewer/NYTPhotoViewerArrayDataSource.h>
-#import <NYTPhotoViewer/NYTPhotoViewerSinglePhotoDataSource.h>
-#import <NYTPhotoViewer/NYTPhotosOverlayView.h>
-#import <NYTPhotoViewer/NYTPhotosViewController.h>
-#import <NYTPhotoViewer/NYTPhotoTransitionAnimator.h>
-#import <NYTPhotoViewer/NYTPhotoTransitionController.h>
-#import <NYTPhotoViewer/NYTPhotoViewController.h>
-#import <NYTPhotoViewer/NYTScalingImageView.h>
+#import <NYTPhotoViewerCore/NYTPhotoCaptionView.h>
+#import <NYTPhotoViewerCore/NYTPhotoDismissalInteractionController.h>
+#import <NYTPhotoViewerCore/NYTPhotoViewerArrayDataSource.h>
+#import <NYTPhotoViewerCore/NYTPhotoViewerSinglePhotoDataSource.h>
+#import <NYTPhotoViewerCore/NYTPhotosOverlayView.h>
+#import <NYTPhotoViewerCore/NYTPhotosViewController.h>
+#import <NYTPhotoViewerCore/NYTPhotoTransitionAnimator.h>
+#import <NYTPhotoViewerCore/NYTPhotoTransitionController.h>
+#import <NYTPhotoViewerCore/NYTPhotoViewController.h>
+#import <NYTPhotoViewerCore/NYTScalingImageView.h>
 
 // Protocols
-#import <NYTPhotoViewer/NYTPhoto.h>
-#import <NYTPhotoViewer/NYTPhotoCaptionViewLayoutWidthHinting.h>
-#import <NYTPhotoViewer/NYTPhotoContainer.h>
-#import <NYTPhotoViewer/NYTPhotoViewerDataSource.h>
+#import <NYTPhotoViewerCore/NYTPhoto.h>
+#import <NYTPhotoViewerCore/NYTPhotoCaptionViewLayoutWidthHinting.h>
+#import <NYTPhotoViewerCore/NYTPhotoContainer.h>
+#import <NYTPhotoViewerCore/NYTPhotoViewerDataSource.h>
 
 // Support
-#import <NYTPhotoViewer/NSBundle+NYTPhotoViewer.h>
+#import <NYTPhotoViewerCore/NSBundle+NYTPhotoViewer.h>
