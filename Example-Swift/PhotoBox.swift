@@ -27,14 +27,14 @@ final class NYTPhotoBox: NSObject, NYTPhoto {
     var attributedCaptionTitle: NSAttributedString?
 
     var attributedCaptionSummary: NSAttributedString? {
-        let attributes = [NSForegroundColorAttributeName: UIColor.white,
-                          NSFontAttributeName: UIFont.preferredFont(forTextStyle: .body)]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.white,
+                                                         .font: UIFont.preferredFont(forTextStyle: .body)]
         return NSAttributedString(string: value.summary, attributes: attributes)
     }
 
     var attributedCaptionCredit: NSAttributedString? {
-        let attributes = [NSForegroundColorAttributeName: UIColor.gray,
-                          NSFontAttributeName: UIFont.preferredFont(forTextStyle: .footnote)]
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.gray,
+                                                         .font: UIFont.preferredFont(forTextStyle: .footnote)]
         return NSAttributedString(string: value.credit, attributes: attributes)
     }
 }
