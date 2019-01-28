@@ -90,7 +90,7 @@ static const CGFloat NYTPhotoCaptionViewVerticalMargin = 7.0;
 
 - (instancetype)initWithAttributedTitle:(NSAttributedString *)attributedTitle attributedSummary:(NSAttributedString *)attributedSummary attributedCredit:(NSAttributedString *)attributedCredit {
     self = [super initWithFrame:CGRectZero];
-    
+
     if (self) {
         _attributedTitle = [attributedTitle copy];
         _attributedSummary = [attributedSummary copy];
@@ -98,7 +98,7 @@ static const CGFloat NYTPhotoCaptionViewVerticalMargin = 7.0;
 
         [self commonInit];
     }
-    
+
     return self;
 }
 
@@ -120,12 +120,12 @@ static const CGFloat NYTPhotoCaptionViewVerticalMargin = 7.0;
     self.textView.textContainerInset = UIEdgeInsetsMake(NYTPhotoCaptionViewVerticalMargin, NYTPhotoCaptionViewHorizontalMargin, NYTPhotoCaptionViewVerticalMargin, NYTPhotoCaptionViewHorizontalMargin);
 
     [self addSubview:self.textView];
-    
+
     NSLayoutConstraint *topConstraint = [NSLayoutConstraint constraintWithItem:self.textView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
     NSLayoutConstraint *bottomConstraint = [NSLayoutConstraint constraintWithItem:self.textView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
     NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self.textView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeWidth multiplier:1.0 constant:0.0];
     NSLayoutConstraint *horizontalPositionConstraint = [NSLayoutConstraint constraintWithItem:self.textView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0.0];
-    
+
     [self addConstraints:@[topConstraint, bottomConstraint, widthConstraint, horizontalPositionConstraint]];
 }
 
@@ -138,27 +138,27 @@ static const CGFloat NYTPhotoCaptionViewVerticalMargin = 7.0;
 
 - (void)updateTextViewAttributedText {
     NSMutableAttributedString *attributedLabelText = [[NSMutableAttributedString alloc] init];
-    
+
     if (self.attributedTitle) {
         [attributedLabelText appendAttributedString:self.attributedTitle];
     }
-    
+
     if (self.attributedSummary) {
         if (self.attributedTitle) {
             [attributedLabelText appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
         }
-        
+
         [attributedLabelText appendAttributedString:self.attributedSummary];
     }
-    
+
     if (self.attributedCredit) {
         if (self.attributedTitle || self.attributedSummary) {
             [attributedLabelText appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
         }
-        
+
         [attributedLabelText appendAttributedString:self.attributedCredit];
     }
-    
+
     self.textView.attributedText = attributedLabelText;
 }
 

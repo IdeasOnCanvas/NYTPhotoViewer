@@ -26,15 +26,15 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
     UIView *fromView = [self.transitionContext viewForKey:UITransitionContextFromViewKey];
     CGPoint translatedPanGesturePoint = [panGestureRecognizer translationInView:fromView];
     CGPoint newCenterPoint = CGPointMake(anchorPoint.x, anchorPoint.y + translatedPanGesturePoint.y);
-    
+
     // Pan the view on pace with the pan gesture.
     viewToPan.center = newCenterPoint;
-    
+
     CGFloat verticalDelta = newCenterPoint.y - anchorPoint.y;
-    
+
     CGFloat backgroundAlpha = [self backgroundAlphaForPanningWithVerticalDelta:verticalDelta];
     fromView.backgroundColor = [fromView.backgroundColor colorWithAlphaComponent:backgroundAlpha];
-    
+
     if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [self finishPanWithPanGestureRecognizer:panGestureRecognizer verticalDelta:verticalDelta viewToPan:viewToPan anchorPoint:anchorPoint];
     }
@@ -42,20 +42,20 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
 
 - (void)finishPanWithPanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer verticalDelta:(CGFloat)verticalDelta viewToPan:(UIView *)viewToPan anchorPoint:(CGPoint)anchorPoint {
     UIView *fromView = [self.transitionContext viewForKey:UITransitionContextFromViewKey];
-    
+
     // Return to center case.
     CGFloat velocityY = [panGestureRecognizer velocityInView:panGestureRecognizer.view].y;
-    
+
     CGFloat animationDuration = (ABS(velocityY) * NYTPhotoDismissalInteractionControllerReturnToCenterVelocityAnimationRatio) + 0.2;
     CGFloat animationCurve = UIViewAnimationOptionCurveEaseOut;
     CGPoint finalPageViewCenterPoint = anchorPoint;
     CGFloat finalBackgroundAlpha = 1.0;
-    
+
     CGFloat dismissDistance = NYTPhotoDismissalInteractionControllerPanDismissDistanceRatio * CGRectGetHeight(fromView.bounds);
     BOOL isDismissing = ABS(verticalDelta) > dismissDistance;
-    
+
     BOOL didAnimateUsingAnimator = NO;
-    
+
     if (isDismissing) {
         if (self.shouldAnimateUsingAnimator) {
             [self.animator animateTransition:self.transitionContext];
@@ -63,24 +63,24 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
         }
         else {
             BOOL isPositiveDelta = verticalDelta >= 0;
-            
+
             CGFloat modifier = isPositiveDelta ? 1 : -1;
             CGFloat finalCenterY = CGRectGetMidY(fromView.bounds) + modifier * CGRectGetHeight(fromView.bounds);
             finalPageViewCenterPoint = CGPointMake(fromView.center.x, finalCenterY);
-            
+
             // Maintain the velocity of the pan, while easing out.
             animationDuration = ABS(finalPageViewCenterPoint.y - viewToPan.center.y) / ABS(velocityY);
             animationDuration = MIN(animationDuration, NYTPhotoDismissalInteractionControllerPanDismissMaximumDuration);
-            
+
             animationCurve = UIViewAnimationOptionCurveEaseOut;
             finalBackgroundAlpha = 0.0;
         }
     }
-    
+
     if (!didAnimateUsingAnimator) {
         [UIView animateWithDuration:animationDuration delay:0 options:animationCurve animations:^{
             viewToPan.center = finalPageViewCenterPoint;
-            
+
             fromView.backgroundColor = [fromView.backgroundColor colorWithAlphaComponent:finalBackgroundAlpha];
         } completion:^(BOOL finished) {
             if (isDismissing) {
@@ -88,16 +88,16 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
             }
             else {
                 [self.transitionContext cancelInteractiveTransition];
-                
+
                 if (![[self class] isRadar20070670Fixed]) {
                     [self fixCancellationStatusBarAppearanceBug];
                 }
             }
-            
+
             self.viewToHideWhenBeginningTransition.alpha = 1.0;
-            
+
             [self.transitionContext completeTransition:isDismissing && !self.transitionContext.transitionWasCancelled];
-            
+
             self.transitionContext = nil;
         }];
     }
@@ -110,10 +110,10 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
     CGFloat startingAlpha = 1.0;
     CGFloat finalAlpha = 0.1;
     CGFloat totalAvailableAlpha = startingAlpha - finalAlpha;
-    
+
     CGFloat maximumDelta = CGRectGetHeight([self.transitionContext viewForKey:UITransitionContextFromViewKey].bounds) / 2.0; // Arbitrary value.
     CGFloat deltaAsPercentageOfMaximum = MIN(ABS(verticalDelta) / maximumDelta, 1.0);
-    
+
     return startingAlpha - (deltaAsPercentageOfMaximum * totalAvailableAlpha);
 }
 
@@ -122,11 +122,11 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
 - (void)fixCancellationStatusBarAppearanceBug {
     UIViewController *toViewController = [self.transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     UIViewController *fromViewController = [self.transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
-    
+
     NSString *statusBarViewControllerSelectorPart1 = @"_setPresentedSta";
     NSString *statusBarViewControllerSelectorPart2 = @"tusBarViewController:";
     SEL setStatusBarViewControllerSelector = NSSelectorFromString([statusBarViewControllerSelectorPart1 stringByAppendingString:statusBarViewControllerSelectorPart2]);
-    
+
     if ([toViewController respondsToSelector:setStatusBarViewControllerSelector] && fromViewController.modalPresentationCapturesStatusBarAppearance) {
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -159,7 +159,7 @@ static const CGFloat NYTPhotoDismissalInteractionControllerReturnToCenterVelocit
 
 - (void)startInteractiveTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
     self.viewToHideWhenBeginningTransition.alpha = 0.0;
-    
+
     self.transitionContext = transitionContext;
 }
 

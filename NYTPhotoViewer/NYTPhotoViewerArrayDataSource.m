@@ -20,7 +20,7 @@
 
 - (instancetype)initWithPhotos:(nullable NSArray<id<NYTPhoto>> *)photos {
     self = [super init];
-    
+
     if (self) {
         if (photos == nil) {
             _photos = @[];
@@ -28,7 +28,7 @@
             _photos = [photos copy];
         }
     }
-    
+
     return self;
 }
 
@@ -52,7 +52,7 @@
     if (photoIndex < self.photos.count) {
         return self.photos[photoIndex];
     }
-    
+
     return nil;
 }
 

@@ -28,22 +28,22 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
-    
+
     if (self) {
         [self setupNavigationBar];
     }
-    
+
     return self;
 }
 
 // Pass the touches down to other views: http://stackoverflow.com/a/8104378
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
     UIView *hitView = [super hitTest:point withEvent:event];
-    
+
     if (hitView == self) {
         return nil;
     }
-    
+
     return hitView;
 }
 
@@ -54,7 +54,7 @@
         [self.navigationBar invalidateIntrinsicContentSize];
         [self.navigationBar layoutIfNeeded];
     }];
-    
+
     [super layoutSubviews];
 
     if ([self.captionView conformsToProtocol:@protocol(NYTPhotoCaptionViewLayoutWidthHinting)]) {
@@ -67,19 +67,19 @@
 - (void)setupNavigationBar {
     self.navigationBar = [[UINavigationBar alloc] init];
     self.navigationBar.translatesAutoresizingMaskIntoConstraints = NO;
-    
+
     // Make navigation bar background fully transparent.
     self.navigationBar.backgroundColor = [UIColor clearColor];
     self.navigationBar.barTintColor = nil;
     self.navigationBar.translucent = YES;
     self.navigationBar.shadowImage = [[UIImage alloc] init];
     [self.navigationBar setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    
+
     self.navigationItem = [[UINavigationItem alloc] initWithTitle:@""];
     self.navigationBar.items = @[self.navigationItem];
-    
+
     [self addSubview:self.navigationBar];
-    
+
     if ([self respondsToSelector:@selector(safeAreaLayoutGuide)]) {
         NSLayoutConstraint *topConstraint = [self.navigationBar.topAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.topAnchor];
         NSLayoutConstraint *leftConstraint = [self.navigationBar.leftAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.leftAnchor];
@@ -97,11 +97,11 @@
     if (self.captionView == captionView) {
         return;
     }
-    
+
     [self.captionView removeFromSuperview];
-    
+
     _captionView = captionView;
-    
+
     self.captionView.translatesAutoresizingMaskIntoConstraints = NO;
     [self addSubview:self.captionView];
 
