@@ -6,7 +6,7 @@
 //  Copyright © 2017 The New York Times Company. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 #import "NYTPhotoViewerDataSource.h"
 
