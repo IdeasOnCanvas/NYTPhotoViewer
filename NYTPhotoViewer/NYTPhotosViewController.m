@@ -467,7 +467,7 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
         animated = NO;
     }
 
-    NSInteger currentIdx = [self.dataSource indexOfPhoto:self.currentlyDisplayedPhoto];
+    NSInteger currentIdx = self.currentlyDisplayedPhoto != nil ? [self.dataSource indexOfPhoto:self.currentlyDisplayedPhoto] : 0;
     NSInteger newIdx = [self.dataSource indexOfPhoto:viewController.photo];
     UIPageViewControllerNavigationDirection direction = (newIdx < currentIdx) ? UIPageViewControllerNavigationDirectionReverse : UIPageViewControllerNavigationDirectionForward;
     
