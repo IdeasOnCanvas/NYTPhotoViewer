@@ -6,7 +6,7 @@
 //  Copyright © 2017 NYTimes. All rights reserved.
 //
 
-import NYTPhotoViewer
+import NYTPhotoViewerCore
 
 /// Coordinates interaction between the application's data layer and the photo viewer component.
 final class PhotoViewerCoordinator: NYTPhotoViewerDataSource {

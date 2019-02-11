@@ -56,8 +56,6 @@
 		11BA4AF11C8912980007EC46 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA4AEB1C8911A00007EC46 /* FLAnimatedImage.framework */; };
 		11BA4AF21C8912980007EC46 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA4AEB1C8911A00007EC46 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11BA4B0A1C8913220007EC46 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA4B071C8912F20007EC46 /* OCMock.framework */; };
-		11BA4B0C1C8913590007EC46 /* FLAnimatedImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA4AEB1C8911A00007EC46 /* FLAnimatedImage.framework */; };
-		11BA4B0D1C8913590007EC46 /* FLAnimatedImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11BA4AEB1C8911A00007EC46 /* FLAnimatedImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11FBDA7A1C87714600018169 /* NYTPhotoViewer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 11FBDA791C87714600018169 /* NYTPhotoViewer.bundle */; };
 		11FBDA8C1C87753200018169 /* NYTPhotoCaptionView.h in Headers */ = {isa = PBXBuildFile; fileRef = 111084641C87684D00699670 /* NYTPhotoCaptionView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11FBDA8D1C87753200018169 /* NYTPhotoCaptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 111084341C87682300699670 /* NYTPhotoCaptionView.m */; };
@@ -89,8 +87,6 @@
 		11FBDAE11C877BD600018169 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FBDAE01C877BD600018169 /* ViewController.swift */; };
 		11FBDAE41C877BD600018169 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11FBDAE21C877BD600018169 /* Main.storyboard */; };
 		11FBDAF11C877C8B00018169 /* PhotosProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FBDAF01C877C8B00018169 /* PhotosProvider.swift */; };
-		11FBDAF71C877CEF00018169 /* NYTPhotoViewer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 111084061C875B5000699670 /* NYTPhotoViewer.framework */; };
-		11FBDAF81C877CEF00018169 /* NYTPhotoViewer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 111084061C875B5000699670 /* NYTPhotoViewer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11FBDAFD1C877D9A00018169 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11FBDAFB1C877D9A00018169 /* LaunchScreen.xib */; };
 		11FBDAFE1C877F5500018169 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 111084781C876A2B00699670 /* Assets.xcassets */; };
 		11FBDAFF1C877F8000018169 /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 111084851C876B0400699670 /* giphy.gif */; };
@@ -101,6 +97,8 @@
 		93F45B191E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 93F45B161E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		93F45B1A1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
 		93F45B1B1E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F45B171E3BB5610093DB93 /* NYTPhotoViewerSinglePhotoDataSource.m */; };
+		CD3187832211EAF100F70DBF /* NYTPhotoViewerCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBDA831C8774AC00018169 /* NYTPhotoViewerCore.framework */; };
+		CD3187842211EAF100F70DBF /* NYTPhotoViewerCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11FBDA831C8774AC00018169 /* NYTPhotoViewerCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,19 +186,12 @@
 			remoteGlobalIDString = 817EB1621BD765130047E85A;
 			remoteInfo = "OCMock tvOS";
 		};
-		11BA4B0E1C8913590007EC46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 11BA4AE61C8911A00007EC46 /* FLAnimatedImage.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 92C9BC0B1B199DC500D79B06;
-			remoteInfo = FLAnimatedImage;
-		};
-		11FBDAF91C877CEF00018169 /* PBXContainerItemProxy */ = {
+		CD3187852211EAF100F70DBF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 111083FD1C875B4F00699670 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 111084051C875B5000699670;
-			remoteInfo = NYTPhotoViewer;
+			remoteGlobalIDString = 11FBDA821C8774AC00018169;
+			remoteInfo = NYTPhotoViewerCore;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -223,8 +214,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				11FBDAF81C877CEF00018169 /* NYTPhotoViewer.framework in Embed Frameworks */,
-				11BA4B0D1C8913590007EC46 /* FLAnimatedImage.framework in Embed Frameworks */,
+				CD3187842211EAF100F70DBF /* NYTPhotoViewerCore.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,8 +328,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11FBDAF71C877CEF00018169 /* NYTPhotoViewer.framework in Frameworks */,
-				11BA4B0C1C8913590007EC46 /* FLAnimatedImage.framework in Frameworks */,
+				CD3187832211EAF100F70DBF /* NYTPhotoViewerCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -651,8 +640,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				11FBDAFA1C877CEF00018169 /* PBXTargetDependency */,
-				11BA4B0F1C8913590007EC46 /* PBXTargetDependency */,
+				CD3187862211EAF100F70DBF /* PBXTargetDependency */,
 			);
 			name = "Example-Swift";
 			productName = "Example-Swift";
@@ -924,15 +912,10 @@
 			name = FLAnimatedImage;
 			targetProxy = 11BA4AF31C8912980007EC46 /* PBXContainerItemProxy */;
 		};
-		11BA4B0F1C8913590007EC46 /* PBXTargetDependency */ = {
+		CD3187862211EAF100F70DBF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = FLAnimatedImage;
-			targetProxy = 11BA4B0E1C8913590007EC46 /* PBXContainerItemProxy */;
-		};
-		11FBDAFA1C877CEF00018169 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 111084051C875B5000699670 /* NYTPhotoViewer */;
-			targetProxy = 11FBDAF91C877CEF00018169 /* PBXContainerItemProxy */;
+			target = 11FBDA821C8774AC00018169 /* NYTPhotoViewerCore */;
+			targetProxy = CD3187852211EAF100F70DBF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
