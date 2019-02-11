@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NYTPhotoViewer
+import NYTPhotoViewerCore
 
 /// A box allowing NYTPhotoViewer to consume Swift value types from our codebase.
 final class NYTPhotoBox: NSObject, NYTPhoto {

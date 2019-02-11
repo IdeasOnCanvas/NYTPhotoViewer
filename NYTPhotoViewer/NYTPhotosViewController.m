@@ -82,6 +82,12 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
         return YES;
     }
 
+    if (action == @selector(keyCommandClosePressed) ||
+        action == @selector(keyCommandRightPressed) ||
+        action == @selector(keyCommandLeftPressed)) {
+        return YES;
+    }
+
     return NO;
 }
 
@@ -385,6 +391,52 @@ static const UIEdgeInsets NYTPhotosViewControllerCloseButtonImageInsets = {3, 0,
 
     if (self.overlayView.hidden) {
         [self setOverlayViewHidden:NO animated:animated];
+    }
+}
+
+#pragma mark - Key Commands
+
+- (NSArray<UIKeyCommand *> *)keyCommands {
+    NSMutableArray *keyCommands = [NSMutableArray new];
+    // Our setup doesn't allow localisation in other bundles (like this one here) so we don't use discoverable keyCommands
+    [keyCommands addObject:[UIKeyCommand keyCommandWithInput:@" " modifierFlags:kNilOptions action:@selector(keyCommandClosePressed)]];
+    [keyCommands addObject:[UIKeyCommand keyCommandWithInput:UIKeyInputEscape modifierFlags:kNilOptions action:@selector(keyCommandClosePressed)]];
+    [keyCommands addObject:[UIKeyCommand keyCommandWithInput:UIKeyInputLeftArrow modifierFlags:kNilOptions action:@selector(keyCommandLeftPressed)]];
+    [keyCommands addObject:[UIKeyCommand keyCommandWithInput:UIKeyInputRightArrow modifierFlags:kNilOptions action:@selector(keyCommandRightPressed)]];
+
+    return keyCommands;
+}
+
+- (void)keyCommandClosePressed {
+    [self dismissViewControllerAnimated:YES userInitiated:YES completion:nil];
+}
+
+- (void)keyCommandLeftPressed {
+    id<NYTPhoto> currentPhoto = self.currentlyDisplayedPhoto;
+    NSInteger currentPhotoIndex = [self.dataSource indexOfPhoto:currentPhoto];
+    if (currentPhotoIndex <= 0) { return; }
+
+    NSInteger previousPhotoIndex = currentPhotoIndex - 1;
+    id<NYTPhoto> previousPhoto = [self.dataSource photoAtIndex:previousPhotoIndex];
+
+    [self displayPhoto:previousPhoto animated:YES];
+    if ([self.delegate respondsToSelector:@selector(photosViewController:didNavigateToPhoto:atIndex:)]) {
+        [self.delegate photosViewController:self didNavigateToPhoto:previousPhoto atIndex:previousPhotoIndex];
+    }
+}
+
+- (void)keyCommandRightPressed {
+    id<NYTPhoto> currentPhoto = self.currentlyDisplayedPhoto;
+    NSInteger currentPhotoIndex = [self.dataSource indexOfPhoto:currentPhoto];
+    NSInteger numberOfPhotos = [[self.dataSource numberOfPhotos] integerValue];
+    if (currentPhotoIndex >= (numberOfPhotos - 1)) { return; }
+
+    NSInteger nextPhotoIndex = currentPhotoIndex + 1;
+    id<NYTPhoto> nextPhoto = [self.dataSource photoAtIndex:nextPhotoIndex];
+
+    [self displayPhoto:nextPhoto animated:YES];
+    if ([self.delegate respondsToSelector:@selector(photosViewController:didNavigateToPhoto:atIndex:)]) {
+        [self.delegate photosViewController:self didNavigateToPhoto:nextPhoto atIndex:nextPhotoIndex];
     }
 }
 

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import NYTPhotoViewer
+import NYTPhotoViewerCore
 
 // The Swift demo project doesn't aim to exactly replicate the ObjC demo, which comprehensively demonstrates the photo viewer.
 // Rather, the Swift demo aims to show how to interact with the photo viewer in Swift, and how an application might coordinate the photo viewer with a more complex data layer.
