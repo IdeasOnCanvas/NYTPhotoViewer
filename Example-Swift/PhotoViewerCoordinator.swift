@@ -42,7 +42,7 @@ final class PhotoViewerCoordinator: NYTPhotoViewerDataSource {
     @objc
     func index(of photo: NYTPhoto) -> Int {
         guard let box = photo as? NYTPhotoBox else { return NSNotFound }
-        return slideshow.index(where: { $0.value.identifier == box.value.identifier }) ?? NSNotFound
+        return slideshow.firstIndex(where: { $0.value.identifier == box.value.identifier }) ?? NSNotFound
     }
 
     @objc
